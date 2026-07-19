@@ -13,7 +13,9 @@ app = FastAPI()
 
 
 origins = [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://superb-trust-production-b12d.up.railway.app"
 ]
 
 app.add_middleware(
