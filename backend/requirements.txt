@@ -5,6 +5,23 @@ pydantic==2.13.4
 pydantic-settings==2.5.2
 python-jose==3.3.0
 passlib[bcrypt]==1.7.4
-
+email-validator
 python-multipart==0.0.9
 
+fastapi==0.139.0
+uvicorn==0.29.0
+SQLAlchemy==2.0.36
+pydantic==2.13.4
+pydantic-settings==2.5.2
+python-jose==3.3.0
+passlib[bcrypt]==1.7.4
+email-validator
+python-multipart==0.0.9
+
+pypdf
+python-docx
+python-dotenv
+requests
+groq
+bcrypt
+openai

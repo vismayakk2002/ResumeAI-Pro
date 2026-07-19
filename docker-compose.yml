@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./backend
+
+    container_name: resumeai-backend
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./backend:/app
+
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    build:
+      context: ./frontend/frontend
+
+    container_name: resumeai-frontend
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ./frontend/frontend:/app
+      - /app/node_modules
+      
+    depends_on:
+      - backend
