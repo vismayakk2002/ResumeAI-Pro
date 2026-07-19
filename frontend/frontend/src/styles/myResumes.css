@@ -1,0 +1,211 @@
+.my-resumes-page {
+    min-height: 100vh;
+    padding: 45px 70px;
+    background: #f4f7fc;
+}
+
+.page-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-top h1 {
+    font-size: 38px;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.page-top p {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+.create-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.create-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.search-bar {
+    margin-bottom: 35px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: .3s;
+}
+
+.search-bar input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 25px;
+}
+
+.resume-card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.resume-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 35px rgba(0,0,0,.12);
+}
+
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.resume-header h2 {
+    font-size: 22px;
+    color: #111827;
+}
+
+.resume-badge {
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.resume-date {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+.resume-actions {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+}
+
+.resume-actions button {
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.resume-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.view-btn {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.view-btn:hover {
+    background: #e5e7eb;
+}
+
+.edit-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #1d4ed8;
+}
+
+.optimize-btn {
+    background: #16a34a;
+    color: white;
+}
+
+.optimize-btn:hover {
+    background: #15803d;
+}
+
+.download-btn {
+    background: #7c3aed;
+    color: white;
+}
+
+.download-btn:hover {
+    background: #6d28d9;
+}
+
+.delete-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+}
+
+.empty-card {
+    background: white;
+    border-radius: 18px;
+    padding: 70px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.empty-card h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.empty-card p {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 22px;
+    padding: 80px;
+    color: #2563eb;
+}
+
+@media (max-width: 768px) {
+
+    .my-resumes-page {
+        padding: 25px;
+    }
+
+    .page-top {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .resume-actions {
+        grid-template-columns: 1fr;
+    }
+}
