@@ -3,8 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Optional
 
-from pydantic import BaseModel, EmailStr, Field
-
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 class UserOut(BaseModel):
@@ -30,11 +29,14 @@ class UserOut(BaseModel):
 class SignupRequest(BaseModel):
     name: str = Field(min_length=2, max_length=120)
     email: EmailStr
-    # bcrypt accepts up to 72 bytes; bcrypt will truncate longer inputs.
-    # Router will also truncate to 72 bytes.
     password: str = Field(min_length=8)
 
-
+    @field_validator("password")
+    @classmethod
+    def validate_password_length(cls, value: str):
+        if len(value.encode("utf-8")) > 72:
+            raise ValueError("Password cannot be longer than 72 bytes")
+        return value
 
 
 

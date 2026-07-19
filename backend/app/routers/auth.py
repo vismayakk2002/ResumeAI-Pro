@@ -20,21 +20,28 @@ router = APIRouter()
 
 @router.post("/signup", response_model=SignupResponse, status_code=status.HTTP_201_CREATED)
 def signup(payload: SignupRequest, db: Session = Depends(get_db)):
-    payload_dict = payload.model_dump()
-    # Ensure the stored hash uses bcrypt-truncated input, and avoid pydantic rejecting long passwords.
-    payload_dict["password"] = payload_dict["password"][:72]
-    payload = SignupRequest(**payload_dict)
-    try:
 
+    if len(payload.password.encode("utf-8")) > 72:
+        raise HTTPException(
+            status_code=400,
+            detail="Password cannot be longer than 72 characters"
+        )
+
+    try:
         user = AuthService.signup(db=db, payload=payload)
         return SignupResponse(user=UserOut.model_validate(user))
+
     except ValueError as exc:
         if str(exc) == "email_taken":
-            raise HTTPException(status_code=400, detail="Email already registered") from exc
-        if str(exc) == "invalid_credentials":
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid email or password") from exc
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
+            raise HTTPException(
+                status_code=400,
+                detail="Email already registered"
+            ) from exc
 
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc)
+        ) from exc
 
 
 
